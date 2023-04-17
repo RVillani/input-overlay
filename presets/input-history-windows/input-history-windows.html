@@ -20,9 +20,11 @@
       }
 
       body {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 48px;
-        color: white;
+        font-family: Futura PT, Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 25px;
+        color: rgba(100, 248, 255, 1);
+        text-shadow: 0 0 0.4em rgba(100, 248, 255, 1);
 
         overflow: hidden;
       }
@@ -41,15 +43,17 @@
       /* Animation for hide timeout */
       p.key-combination.hidden {
         opacity: 0;
+        transform: translate(1em, 0);
+        filter: blur(0.3em);
 
-        transition-property: opacity;
-        transition-timing-function: ease-out;
+        transition-property: opacity transform filter;
+        transition-timing-function: ease-in;
         transition-duration: 1s;
       }
 
       * + p.key-combination {
         /* Vertical distance between combinations */
-        margin-top: 0.5em;
+        margin-top: 0.1em;
       }
 
       p.key-combination > * {
@@ -59,24 +63,26 @@
 
       p.key-combination > .separator {
         display: inline-block;
+        color: rgba(255, 0, 255, 1.0);
+        text-shadow: 0 0 0.4em rgba(255, 0, 255, 1);
 
         /* Spacing on sides of separator */
-        margin-left: 0.25em;
-        margin-right: 0.25em;
+        margin-left: 0.1em;
+        margin-right: 0.1em;
       }
 
       span.key, span.repeat {
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgba(0, 68, 125, 1);
       }
 
       span.key {
         display: inline-flex;
-        border-radius: 0.25em;
+        border-radius: 0.2em;
         /* Override text height, otherwise it uses more vertical space and
            keys with text in them are higher than ones with just icons. */
         line-height: 1em;
 
-        padding: 0.25em;
+        padding: 0.35em 0.5em;
         white-space: nowrap;
       }
 
@@ -87,6 +93,7 @@
         padding: 0.3em 0.6em;
 
         font-size: 0.7em;
+        font-weight: normal;
       }
 
       /* #endregion */
@@ -103,6 +110,8 @@
 
         display: block;
         margin: auto;
+
+        filter: drop-shadow(0 0 0.4em rgba(100, 248, 255, 1));
       }
 
       span.key div {
@@ -358,6 +367,7 @@
       0x0057: ["VC_F11", "F11"],
       0x0058: ["VC_F12", "F12"],
 
+      /*
       0x005b: ["VC_F13", "F13"],
       0x005c: ["VC_F14", "F14"],
       0x005d: ["VC_F15", "F15"],
@@ -370,6 +380,7 @@
       0x0069: ["VC_F22", "F22"],
       0x006a: ["VC_F23", "F23"],
       0x006b: ["VC_F24", "F24"],
+      */
       // End Function Keys
 
       // Begin Alphanumeric Zone
@@ -525,6 +536,7 @@
       //  Modifier and Control Keys End
 
       //  Media Control Keys Begin
+      /*
       0xe05e: ["VC_POWER", "POWER"],
       0xe05f: ["VC_SLEEP", "SLEEP"],
       0xe063: ["VC_WAKE", "WAKE"],
@@ -552,6 +564,7 @@
       0xe068: ["VC_BROWSER_STOP", "BROWSER STOP"],
       0xe067: ["VC_BROWSER_REFRESH", "BROWSER REFRESH"],
       0xe066: ["VC_BROWSER_FAVORITES", "BROWSER FAVORITES"],
+      */
       // End Media Control Keys
 
       // Begin Japanese Language Keys
@@ -810,7 +823,7 @@
      * Max count of history shown. Lower = better performance.
      * @type {number}
      */
-    var HISTORY_MAX = 10;
+    var HISTORY_MAX = 6;
     /**
      * Enable / Disable timeout for key combinations
      * @type {boolean}
@@ -820,7 +833,7 @@
      * Time delay in ms before the key is hidden.
      * @type {number}
      */
-    var HISTORY_TIMEOUT = 3500;
+    var HISTORY_TIMEOUT = 4000;
     /**
      * Align history to top of source when true and add newer keys to top.
      * @type {boolean}
@@ -836,7 +849,7 @@
      * be added to history as multiple presses.
      * @type {boolean}
      */
-    var ONLY_INITIAL_PRESS = false;
+    var ONLY_INITIAL_PRESS = true;
     /**
      * Only count inputs as repeated if the interval between presses in ms
      * is less than this value
