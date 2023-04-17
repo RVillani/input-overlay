@@ -30,8 +30,15 @@
       }
 
       body.bottom-align {
+        /*
         position: absolute;
         bottom: 0;
+        */
+
+        text-align: right;
+        white-space: nowrap;
+        position: absolute;
+        right: 0;
       }
 
       /* #region History List */
@@ -40,10 +47,15 @@
         list-style-type: none;
       }
 
+      p {
+        /* p doesn't create new line */
+        display: inline-block;
+      }
+
       /* Animation for hide timeout */
       p.key-combination.hidden {
         opacity: 0;
-        transform: translate(1em, 0);
+        transform: translate(-1em, 0);
         filter: blur(0.3em);
 
         transition-property: opacity transform filter;
@@ -52,8 +64,8 @@
       }
 
       * + p.key-combination {
-        /* Vertical distance between combinations */
-        margin-top: 0.1em;
+        /* Distance between combinations */
+        margin-left: 0.5em;
       }
 
       p.key-combination > * {
@@ -67,8 +79,8 @@
         text-shadow: 0 0 0.4em rgba(255, 0, 255, 1);
 
         /* Spacing on sides of separator */
-        margin-left: 0.1em;
-        margin-right: 0.1em;
+        margin-left: 0;
+        margin-right: 0;
       }
 
       span.key, span.repeat {
@@ -454,19 +466,19 @@
 
       //  Edit Key Zone Begin
       0x0e52: ["VC_INSERT", "INSERT"],
-      0x0e53: ["VC_DELETE", "DELETE"],
+      0x0e53: ["VC_DELETE", "DEL"],
       0x0e47: ["VC_HOME", "HOME"],
       0x0e4f: ["VC_END", "END"],
-      0x0e49: ["VC_PAGE_UP", "PAGE UP"],
-      0x0e51: ["VC_PAGE_DOWN", "PAGE DOWN"],
+      0x0e49: ["VC_PAGE_UP", "PG UP"],
+      0x0e51: ["VC_PAGE_DOWN", "PG DOWN"],
 
       /* https://github.com/univrsal/input-overlay/issues/174 */
       0xee52: ["VC_INSERT", "INSERT"], // 0x0e52
-      0xee53: ["VC_DELETE", "DELETE"], // 0x0e53
+      0xee53: ["VC_DELETE", "DEL"], // 0x0e53
       0xee47: ["VC_HOME", "HOME"], // 0x0e47
       0xee4f: ["VC_END", "END"], // 0x0e4f
-      0xee49: ["VC_PAGE_UP", "PAGE UP"], // 0x0e49
-      0xee51: ["VC_PAGE_DOWN", "PAGE DOWN"], // 0x0e51
+      0xee49: ["VC_PAGE_UP", "PG UP"], // 0x0e49
+      0xee51: ["VC_PAGE_DOWN", "PG DOWN"], // 0x0e51
       //  Edit Key Zone End
 
       //  Cursor Key Zone Begin
@@ -823,7 +835,7 @@
      * Max count of history shown. Lower = better performance.
      * @type {number}
      */
-    var HISTORY_MAX = 6;
+    var HISTORY_MAX = 30;
     /**
      * Enable / Disable timeout for key combinations
      * @type {boolean}
