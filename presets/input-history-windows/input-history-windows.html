@@ -85,27 +85,28 @@
 
       span.key, span.repeat {
         background-color: rgba(0, 68, 125, 1);
+        display: inline-flex;
+        color: rgba(0, 255, 255, 0.9);
+        white-space: nowrap;
       }
 
       span.key {
-        display: inline-flex;
         border-radius: 0.2em;
         /* Override text height, otherwise it uses more vertical space and
            keys with text in them are higher than ones with just icons. */
         line-height: 1em;
 
         padding: 0.35em 0.5em;
-        white-space: nowrap;
       }
 
       span.repeat {
-        display: inline-flex;
         margin-left: 0.1em;
         border-radius: 1em;
         padding: 0.3em 0.6em;
 
         font-size: 0.7em;
         font-weight: normal;
+        text-shadow: none;
       }
 
       /* #endregion */
@@ -835,7 +836,7 @@
      * Max count of history shown. Lower = better performance.
      * @type {number}
      */
-    var HISTORY_MAX = 30;
+    var HISTORY_MAX = 39;
     /**
      * Enable / Disable timeout for key combinations
      * @type {boolean}
@@ -845,7 +846,7 @@
      * Time delay in ms before the key is hidden.
      * @type {number}
      */
-    var HISTORY_TIMEOUT = 4000;
+    var HISTORY_TIMEOUT = 10000;
     /**
      * Align history to top of source when true and add newer keys to top.
      * @type {boolean}
